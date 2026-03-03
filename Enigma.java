@@ -36,7 +36,6 @@ public class Enigma{
             rotate();
 
         }
-
         return result;
         // note the character aligned with it on the middle rotor
         // find that character on the outer rotor 
@@ -51,7 +50,8 @@ public class Enigma{
 
         for (int i = 0; i < message.length(); i++) {
             char current = message.charAt(i);
-            char outerLetter = rotors[2].charAt(i);
+            int innerIdx = rotors[0].indexOf(current);
+            char outerLetter = rotors[2].charAt(innerIdx);
 
             int middleIdx = rotors[1].indexOf(outerLetter);
             char finalLetter = rotors[2].charAt(middleIdx);
@@ -62,7 +62,6 @@ public class Enigma{
 
 
         }
-
         return result;
         // find letter on outer ring above current letter
         // find letter on outer ring in the middle ring

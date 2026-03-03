@@ -14,16 +14,19 @@ public class Rotor {
     
     public boolean rotate(){
         char[] rotorChars = new char[rotorValues.length()];
-        char temp = rotorChars[0];
+        for (int j = 0; j < rotorChars.length; j++) {
+            rotorChars[j] = rotorValues.charAt(j);
+        }
+        char temp = rotorChars[rotorChars.length-1];
 
-        for (int i = 0; i < rotorChars.length - 1; i++) {
-            rotorChars[i] = rotorChars[i+1];
+        for (int i = rotorChars.length-1; i > 0; i--) {
+            rotorChars[i] = rotorChars[i-1];
         }
 
         rotorChars[0] = temp;
         rotorValues = String.valueOf(rotorChars);
 
-        if (temp == startChar) {
+        if (rotorValues.charAt(0) == startChar) {
             return true;
         } else {
             return false;
